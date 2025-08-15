@@ -1,0 +1,11 @@
+{% extends 'base_home.html' %}
+{% set page_title = 'Binance Screener' %}
+{% block content %}
+  <div class="row" style="justify-content:flex-end;margin:8px 0 16px 0;">
+    <div id="last-update" class="badge">Last update —</div>
+  </div>
+  <div id="cards" class="grid"></div>
+{% endblock %}
+{% block scripts %}
+  <script src="/static/js/main.js?v=5"></script>
+{% endblock %}

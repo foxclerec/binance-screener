@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>{{ page_title or 'Binance Screener' }}</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/static/css/styles.css" />
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
+
+  {% block head %}{% endblock %}
+
+  <style>/* sticky-footer */
+    html,body{height:100%}
+    body{min-height:100vh;display:flex;flex-direction:column}
+    main{flex:1 0 auto}
+    footer{flex-shrink:0}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><img src="/static/favicon.svg" alt="logo"/><span>BINANCE SCREENER</span></a>
+    <nav class="nav">
+      <a href="/" class="link">Home</a>
+      <a href="/guide" class="link">Guide</a>
+      
+      <a href="/admin" class="link">Settings</a>
+<a href="https://ko-fi.com/cryptoscreeners" target="_blank" rel="noopener" class="donate-btn">Donate ☕</a>
+</nav>
+  </header>
+
+  <main class="site-container site-container--grid">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">2025 @ Made with 💚</footer>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

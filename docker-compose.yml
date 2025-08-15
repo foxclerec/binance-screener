@@ -1,0 +1,38 @@
+version: "3.9"
+services:
+  web:
+    build: ./web
+    env_file: .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - ./web:/app
+    command: ["/bin/bash", "/app/entrypoint.sh"]
+  worker:
+    build: ./web
+    env_file: .env
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - ./web:/app
+    command: ["python", "-m", "sprintero.services.scheduler"]
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: sprintero
+      POSTGRES_PASSWORD: sprintero
+      POSTGRES_DB: sprintero
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+volumes:
+  pgdata:

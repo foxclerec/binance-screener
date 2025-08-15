@@ -1,0 +1,37 @@
+{% extends 'base_inner.html' %}
+{% set page_title = 'Settings | Binance Screener' %}
+{% block content %}
+<div class="wrap">
+    <h2 style="display:flex;align-items:center;gap:12px">Settings {% if status %}<span class="badge" style="padding:6px 10px;border-radius:10px;border:1px solid var(--border);color:{{ '#8ff7c5' if status.ok else '#ff8f8f' }};">{{ status.text }}</span>{% endif %}</h2>
+    {% with msgs = get_flashed_messages(with_categories=true) %}
+{% if msgs %}
+<div style="margin:10px 0;">
+{% for cat,msg in msgs %}
+<div style="padding:10px 12px;border-radius:10px;border:1px solid var(--border);font-size:14px;margin-bottom:8px;color: {{ "#ff8f8f" if cat=="err" else "#8ff7c5" }};">{{ msg }}</div>
+{% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+<div class="toolbar">
+      <form method="post" action="/admin/coins">
+        <input name="symbol" pattern="[A-Za-z0-9]{2,12}" title="e.g. ETH or ETHUSDT" placeholder="e.g. ETHUSDT or ETH" />
+        <button class="btn-accent" type="submit">Add coin</button>
+      </form>
+    </div>
+    {% if request.args.get("err")=="invalid" %}<div class="muted" style="margin-bottom:10px;color:#ff8f8f">Symbol not found on Binance. Try e.g. ETH or ETHUSDT.</div>{% endif %}
+    <table class="table">
+      <thead><tr><th>Symbol</th><th>Status</th><th>Actions</th></tr></thead>
+      <tbody>
+        {% for c in coins %}
+        <tr>
+          <td>{{ c.symbol }}</td>
+          <td class="muted">{{ 'enabled' if c.enabled else 'disabled' }}</td>
+          <td>
+            <form method="post" action="/admin/coins/{{c.id}}/toggle" style="display:inline-block"><button type="submit">Toggle</button></form>
+            <form method="post" action="/admin/coins/{{c.id}}/delete" style="display:inline-block" onsubmit="return confirm('Delete {{c.symbol}}?')"><button class="btn-danger" type="submit">Delete</button></form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}

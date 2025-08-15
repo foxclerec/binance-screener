@@ -1,0 +1,27 @@
+{% extends 'base_inner.html' %}
+{% set page_title = 'Guide | Binance Screener' %}
+{% block content %}
+<h1>How to use</h1>
+  <ol>
+    <li>Pick a pair from the list.</li>
+    <li>Check the trend direction (EMA200 on 15m/1h is the baseline).</li>
+    <li>Look for confluence: structure + levels + volume.</li>
+    <li>Decide only after you confirm on the chart.</li>
+  </ol>
+
+  <h2>Good context</h2>
+  <ul>
+    <li>Price is <b>above EMA200</b> and volume grows on pullbacks.</li>
+    <li>Clear higher highs / higher lows with fresh demand zones.</li>
+    <li>Multiple timeframes point the same way.</li>
+  </ul>
+
+  <h2>Avoid</h2>
+  <ul>
+    <li>Counter-trend entries without confirmation.</li>
+    <li>Single volume spikes with no follow-through.</li>
+    <li>Low-liquidity pairs.</li>
+  </ul>
+
+  <p class="muted">Educational tool — not financial advice.</p>
+{% endblock %}
