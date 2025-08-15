@@ -102,7 +102,6 @@ All configuration keys come from environment variables (see `web/sprintero/confi
 ---
 
 ## Notes
-- The Donate page was removed. Top‑right **Donate ☕** button links to Ko‑fi: `https://ko-fi.com/cryptoscreeners`. The `/donate` route returns HTTP 302 to Ko‑fi.
 - Static assets live in `web/sprintero/blueprints/main/static/`.
 - If you change the DB schema, run migrations inside the web container:
   ```bash
@@ -117,4 +116,7 @@ All configuration keys come from environment variables (see `web/sprintero/confi
 
 ---
 
-Made with 💚
+---
+## Support the Project 💖
+If you like this project and want to support its development, you can buy me a coffee:  
+[☕ Donate via Ko-fi](https://ko-fi.com/cryptoscreeners)
