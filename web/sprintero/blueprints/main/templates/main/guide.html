@@ -1,27 +1,66 @@
 {% extends 'base_inner.html' %}
 {% set page_title = 'Guide | Binance Screener' %}
 {% block content %}
-<h1>How to use</h1>
-  <ol>
-    <li>Pick a pair from the list.</li>
-    <li>Check the trend direction (EMA200 on 15m/1h is the baseline).</li>
-    <li>Look for confluence: structure + levels + volume.</li>
-    <li>Decide only after you confirm on the chart.</li>
-  </ol>
+<h1>How to Use</h1>
 
-  <h2>Good context</h2>
-  <ul>
-    <li>Price is <b>above EMA200</b> and volume grows on pullbacks.</li>
-    <li>Clear higher highs / higher lows with fresh demand zones.</li>
-    <li>Multiple timeframes point the same way.</li>
-  </ul>
+<h2>Indicator Logic</h2>
+<ul>
+  <li><b>Corr. (Correlation to BTC):</b> 0.0–1.0 range. Closer to 1 → moves in sync with BTC. Closer to 0 → moves
+    independently.</li>
+  <li><b>EMA 200 (1h):</b>
+    <ul>
+      <li><span style="color:green;">Green</span> — price above EMA200 (bullish bias).</li>
+      <li><span style="color:red;">Red</span> — price below EMA200 (bearish bias).</li>
+      <li><span style="color:gray;">Gray</span> — price near EMA200 (neutral).</li>
+    </ul>
+  </li>
+  <li><b>RSI (1h & 15m):</b>
+    <ul>
+      <li><span style="color:green;">Green</span> — oversold (potential bounce).</li>
+      <li><span style="color:red;">Red</span> — overbought (possible pullback).</li>
+      <li><span style="color:gray;">Gray</span> — neutral momentum.</li>
+    </ul>
+  </li>
+  <li><b>MACD 15m:</b>
+    <ul>
+      <li><span style="color:green;">Green</span> — MACD above signal line & above zero (bullish).</li>
+      <li><span style="color:red;">Red</span> — MACD below signal line (bearish).</li>
+      <li><span style="color:gray;">Gray</span> — no clear signal.</li>
+    </ul>
+  </li>
+  <li><b>Relative Volume:</b> Compares current volume to last 20 candles’ average. Above 1 → higher-than-average
+    activity.</li>
+</ul>
 
-  <h2>Avoid</h2>
-  <ul>
-    <li>Counter-trend entries without confirmation.</li>
-    <li>Single volume spikes with no follow-through.</li>
-    <li>Low-liquidity pairs.</li>
-  </ul>
+<h2>Strategies</h2>
 
-  <p class="muted">Educational tool — not financial advice.</p>
+<h3>1. Trend Following</h3>
+<ul>
+  <li><b>Context:</b> EMA200 green, RSI neutral/green, MACD green.</li>
+  <li><b>Entry:</b> Buy pullbacks with volume confirmation.</li>
+  <li><b>Exit:</b> First resistance or RSI 15m overbought.</li>
+</ul>
+
+<h3>2. Reversal</h3>
+<ul>
+  <li><b>Context:</b> EMA200 red, RSI 1h green, MACD turning green.</li>
+  <li><b>Entry:</b> Avoid high BTC correlation (Corr. &lt; 0.5).</li>
+  <li><b>Exit:</b> EMA200 retest or key level.</li>
+</ul>
+
+<h3>3. Breakout with Volume</h3>
+<ul>
+  <li><b>Context:</b> EMA200 neutral, RSI 15m green, volume &gt; 2× avg, MACD green.</li>
+  <li><b>Entry:</b> Breakout above consolidation with high volume.</li>
+  <li><b>Exit:</b> Trailing stop below last candle lows.</li>
+</ul>
+
+<h3>4. BTC-Correlated Momentum</h3>
+<ul>
+  <li><b>Context:</b> Corr. &gt; 0.85, BTC trending strongly.</li>
+  <li><b>Entry:</b> Same direction as BTC after confirmation.</li>
+  <li><b>Exit:</b> BTC momentum fades or RSI 15m turns red.</li>
+</ul>
+
+<p class="muted">* Educational tool — not financial advice.</p>
 {% endblock %}
