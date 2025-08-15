@@ -1,4 +1,3 @@
-version: "3.9"
 services:
   web:
     build: ./web
@@ -10,7 +9,7 @@ services:
       - redis
     volumes:
       - ./web:/app
-    command: ["/bin/bash", "/app/entrypoint.sh"]
+    command: [ "/bin/bash", "/app/entrypoint.sh" ]
   worker:
     build: ./web
     env_file: .env
@@ -19,7 +18,7 @@ services:
       - redis
     volumes:
       - ./web:/app
-    command: ["python", "-m", "sprintero.services.scheduler"]
+    command: [ "python", "-m", "sprintero.services.scheduler" ]
   db:
     image: postgres:16-alpine
     environment:
