@@ -116,7 +116,6 @@ All configuration keys come from environment variables (see `web/sprintero/confi
 
 ---
 
----
 ## Support the Project 💖
 If you like this project and want to support its development, you can buy me a coffee:  
 [☕ Donate via Ko-fi](https://ko-fi.com/cryptoscreeners)
